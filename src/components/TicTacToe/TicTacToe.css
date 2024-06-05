@@ -4,17 +4,18 @@
 
 .title {
     margin-top: 50px;
-    color: #fff;
+    color: #0b090a;
+    font-family: 'Courier New', Courier, monospace;
     font-size: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.title span {
-    color: #26ffcb;
+/* .title span {
+    color: #6b9080;
     padding-left: 15px;
-}
+} */
 
 .title img {
     padding: 20px 20px;
@@ -32,9 +33,11 @@
     -moz-border-radius: 32px;
     -ms-border-radius: 32px;
     -o-border-radius: 32px;
-    background-color: #1f3540;
+    background-color: #6b9080;
     font-size: 20px;
-    color: #26ffcb;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    color: #0b090a;
     margin-top: 25px;
     margin-bottom: 50px;
     transition: all 400ms ease;
@@ -45,8 +48,8 @@
 }
 
 .reset:hover {
-    background-color: #fff;
-    color: #0f1b21;
+    background-color: #a4c3b2;
+    color: #000;
 }
 
 .board {
@@ -60,14 +63,19 @@
     display: flex;
     height: 120px;
     width: 120px;
-    background-color: #1f3540;
-    border: 4px solid #0f1b21;
+    background-color: #d6ccc2;
+    border: 4px solid #edede9;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     -ms-border-radius: 12px;
     -o-border-radius: 12px;
     cursor: pointer;
+    box-shadow: 0 0 19px rgba(168, 172, 185, 0.3);
+}
+
+.boxes:hover {
+    background-color: #e3d5ca;
 }
 
 .boxes img {
