@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
-import './TicTacToe.css'
 import circle_icon from '../../assets/image/Circle.png'
 import cross_icon from '../../assets/image/Red_X.png'
+import './TicTacToe.css'
 
 
 let data = ["", "", "", "", "", "", "", "", ""]
@@ -21,13 +21,13 @@ function TicTacToe() {
     let box8 = useRef(null)
     let box9 = useRef(null)
 
-    let box_array = [box1, box2, box3, box4, box5, box6, box7, box8, box9,]
+    let box_array = [box1, box2, box3, box4, box5, box6, box7, box8, box9]
 
     const toggle = (e, index) => {
         if (lock) {
             return 0
         }
-        if (count % 2 === 0) {
+        if (count % 2 == 0) {
             e.target.innerHTML = `<img src= '${cross_icon}'>`;
             data[index] = "x";
             setCount(++count);
@@ -37,6 +37,7 @@ function TicTacToe() {
             setCount(++count);
         }
         checkWin()
+
     }
 
     const checkWin = () => {
@@ -56,15 +57,21 @@ function TicTacToe() {
             won(data[8])
         } else if (data[2] == data[4] && data[4] == data[6] && data[6] != "") {
             won(data[6])
+        } else if (!data.includes("")) {
+            won('try again')
         }
+
+
     }
 
     const won = (winner) => {
         setLock(true)
         if (winner == "x") {
             titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon}> wins :)`
-        } else {
+        } else if (winner == "o") {
             titleRef.current.innerHTML = `Congratulations: <img src=${circle_icon}> wins :)`
+        } else {
+            titleRef.current.innerHTML = 'Try Again'
         }
     }
 
