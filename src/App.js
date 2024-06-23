@@ -4,9 +4,11 @@ import TicTacToe from './components/TicTacToe/TicTacToe';
 function App() {
   return (
     <>
-    
-    <TicTacToe />
-    
+
+      <TicTacToe
+        themes={['default', 'spring', 'summer', 'fall', 'winter']}
+      />
+
     </>
   );
 }
