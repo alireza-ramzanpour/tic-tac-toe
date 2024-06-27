@@ -6,7 +6,7 @@ function App() {
     <>
 
       <TicTacToe
-        themes={['default', 'spring', 'summer', 'fall', 'winter']}
+        themes={[ 'default', 'spring', 'summer', 'fall', 'winter']}
       />
 
     </>

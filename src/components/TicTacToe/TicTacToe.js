@@ -17,7 +17,7 @@ let data = ["", "", "", "", "", "", "", "", ""]
 function TicTacToe(props) {
 
     const [selectedTheme, setSelectedTheme] = useState('');
-    const [th, setTh] = useState('')
+    const [selectedThemeName, setSelectedThemeName] = useState('');
     const [playerOneName, setPlayerOneName] = useState('Player One');
     const [playerTwoName, setPlayerTwoName] = useState('Player Two');
 
@@ -83,7 +83,6 @@ function TicTacToe(props) {
         setLock(true)
         if (winner == "x") {
             titleRef.current.innerHTML = `Congratulations: ${playerOneName} wins :)`
-            // titleRef.current.innerHTML = `Congratulations: <img src=${cross_icon}> wins :)`
         } else if (winner == "o") {
             titleRef.current.innerHTML = `Congratulations: ${playerTwoName} wins :)`
         } else {
@@ -120,7 +119,7 @@ function TicTacToe(props) {
 
     const handleEdittingGame = () => {
         let k = props.themes.find((item) => item == selectedTheme)
-        setTh(k)
+        setSelectedThemeName(k)
         closeModal()
     }
 
@@ -128,7 +127,7 @@ function TicTacToe(props) {
 
     return (
         <>
-            <div className={`${th} container`}>
+            <div className={`${selectedThemeName} container`}>
                 <h1 className='title' ref={titleRef}>
                     Tic Tac Toe Game
                 </h1>
@@ -159,26 +158,37 @@ function TicTacToe(props) {
                 <div className='modal'>
                     <div className="modal-background"></div>
                     <div className="modal-content">
-                        <h2 className='modalTitle'>Select the field</h2>
-                        <form>
-                            <input type='text' value={playerOneName} onChange={(e) => setPlayerOneName(e.target.value)} /> <br />
-                            <input type='text' value={playerTwoName} onChange={(e) => setPlayerTwoName(e.target.value)} /> <br />
+                        <form className='form'>
 
-                            <select onChange={(e) => setSelectedTheme(e.target.value)}>
-                                {
-                                    props.themes.map((theme) => (
-                                        <option value={theme}>{theme}</option>
-                                    ))
-                                }
-                            </select>
+                            <label className='modalTitle'>Player cusomization:</label>
+                            <div className='inputBox'>
+                                <input type='text' className='modalTextInput' value={playerOneName} onChange={(e) => setPlayerOneName(e.target.value)} /> <br />
+                            </div>
+                            <div className='inputBox'>
+                                <input type='text' className='modalTextInput' value={playerTwoName} onChange={(e) => setPlayerTwoName(e.target.value)} /> <br />
+                            </div>
+
+                            <label className='modalTitle'>Select a theme:</label>
+                            <div className='inputBox'>
+                                <select className='modalTextInput' onChange={(e) => setSelectedTheme(e.target.value)}>
+                                    <option selected disabled hidden>Choose here</option>
+                                    {
+                                        props.themes.map((theme) => (
+                                            <option value={theme}>{theme.charAt(0).toUpperCase() + theme.slice(1)}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+
+
                             <div className='buttonWrapper'>
-                                <input type='button' className='cancel-btn customBtn' value="Ok" onClick={handleEdittingGame} />
-                                <input type='button' className='cancel-btn customBtn' value="Close" onClick={closeModal} />
+                                <input type='button' className='ok-btn' value="Ok" onClick={handleEdittingGame} />
+                                <input type='button' className='cancel-btn' value="Close" onClick={closeModal} />
                             </div>
 
                         </form>
                     </div>
-                </div>
+                </div >
             }
 
         </>
